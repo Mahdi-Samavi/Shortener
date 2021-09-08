@@ -1,0 +1,20 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb.ttf') format("truetype"),
+      url('/fonts/IRANSansWeb.woff') format("woff"),
+      url('/fonts/IRANSansWeb.woff2') format("woff2");
+}
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
