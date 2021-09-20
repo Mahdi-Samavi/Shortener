@@ -63,7 +63,9 @@ class LinkController extends Controller
      */
     public function views()
     {
-        //
+        $links = User::find(auth()->id())->links;
+
+        return view('links-view', compact('links'));
     }
 
     /**
@@ -95,7 +97,7 @@ class LinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //
     }

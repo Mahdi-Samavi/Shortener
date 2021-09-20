@@ -9,9 +9,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <span>{{ __('Create') }}</span>
-                    @if (url()->previous() !== url()->current())
-                        <a href="{{ url()->previous() }}" title="{{ __('Back') }}">{{ __('Back') }}</a>
-                    @endif
+                    @backward()@endbackward
                 </div>
 
                 <div class="card-body">
@@ -25,6 +23,7 @@
                         </div>
                     @endif
 
+                    @can('create', App\Link::class)
                     <form action="{{ route('link.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
@@ -33,6 +32,10 @@
                         </div>
                         <button class="btn btn-primary">{{ __('Send') }}</button>
                     </form>
+                    @else
+                    <div class="alert alert-danger">{{ __('You must confirm your email before creating a link.') }}</div>
+                    <a href="{{ route('verify') }}" title="{{ __('Verify an email') }}" class="btn btn-primary">{{ __('Verify an email') }}</a>
+                    @endcan
                 </div>
             </div>
         </div>

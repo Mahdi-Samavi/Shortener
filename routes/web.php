@@ -15,12 +15,14 @@ Auth::routes();
 
 Route::get('/', 'BaseController@index')->name('home');
 
-Route::get('/verify-email', 'VerifyController');
+Route::get('/verify-email', 'VerifyController')->name('verify');
+Route::get('/verify/{token}', 'VerifyController@verifying')->name('verifying');
 
 Route::group(['prefix' => 'link', 'as' => 'link.'], function () {
     Route::get('views', 'LinkController@views')->name('views');
     Route::get('create', 'LinkController@create')->name('create');
     Route::post('store', 'LinkController@store')->name('store');
+    Route::delete('delete/{id}', 'LinkController@delete')->name('delete');
 });
 
 Route::get('/{shortened_id}', 'LinkController@index')
